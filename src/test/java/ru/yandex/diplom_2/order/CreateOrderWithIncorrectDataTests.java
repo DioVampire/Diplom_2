@@ -25,7 +25,7 @@ public class CreateOrderWithIncorrectDataTests {
     public void setup(){
         User user = User.getRandomUser();
         userClient = new UserClient();
-        token = userClient.create(user)
+        token = userClient.createUser(user)
                 .extract()
                 .path("accessToken");
 

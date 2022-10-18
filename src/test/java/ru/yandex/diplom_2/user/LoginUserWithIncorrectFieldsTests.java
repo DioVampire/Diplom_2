@@ -31,7 +31,7 @@ public class LoginUserWithIncorrectFieldsTests {
     public void loginUserWithIncorrectPasswordTest() {
 
         // Создание пользователя
-        ValidatableResponse response = userClient.create(user);
+        ValidatableResponse response = userClient.createUser(user);
         // Получение токена пользователя
         token = response.extract().path("accessToken");
         //Заменить пароль, чтобы отличался от использоывнного при регистрации
@@ -49,7 +49,7 @@ public class LoginUserWithIncorrectFieldsTests {
         assertEquals (expectedMessage, actualMessage);
 
         // Удаление пользователя
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class LoginUserWithIncorrectFieldsTests {
     public void loginUserWithIncorrectEmailTest() {
 
         // Создание пользователя
-        ValidatableResponse response = userClient.create(user);
+        ValidatableResponse response = userClient.createUser(user);
         // Получение токена пользователя
         token = response.extract().path("accessToken");
         //Заменить имейл, чтобы отличался от использоывнного при регистрации
@@ -76,7 +76,7 @@ public class LoginUserWithIncorrectFieldsTests {
         assertEquals (expectedMessage, actualMessage);
 
         // Удаление пользователя
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test
@@ -85,11 +85,11 @@ public class LoginUserWithIncorrectFieldsTests {
     public void loginDeletedUserTest() {
 
         // Создание пользователя
-        ValidatableResponse response = userClient.create(user);
+        ValidatableResponse response = userClient.createUser(user);
         // Получение токена пользователя
         token = response.extract().path("accessToken");
         // Удаление пользователя
-        userClient.delete(token);
+        userClient.deleteUser(token);
         // Авторизация пользователя
         ValidatableResponse login = userClient.login(UserCredentials.from(user));
         // Получение статус кода авторизации

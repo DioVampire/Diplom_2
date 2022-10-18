@@ -26,7 +26,7 @@ public class RegisterUserWithValidDataTest {
     // Удаление пользователя
     @After
     public void delete(){
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class RegisterUserWithValidDataTest {
     public void createUserTest() {
 
         // Создание пользователя
-        ValidatableResponse response = userClient.create(user);
+        ValidatableResponse response = userClient.createUser(user);
         // Получение статус кода пользователя
         int statusCode = response.extract().statusCode();
         // Получение ответа

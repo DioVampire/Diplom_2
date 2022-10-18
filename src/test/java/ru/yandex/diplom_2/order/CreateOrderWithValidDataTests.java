@@ -29,7 +29,7 @@ public class CreateOrderWithValidDataTests {
     public void setup(){
         User user = User.getRandomUser();
         userClient = new UserClient();
-        token = userClient.create(user)
+        token = userClient.createUser(user)
                 .extract()
                 .path("accessToken");
 
@@ -45,7 +45,7 @@ public class CreateOrderWithValidDataTests {
     // Удаление пользователя
     @After
     public void delete() {
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test

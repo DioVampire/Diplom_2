@@ -26,7 +26,7 @@ public class GetOrdersForUnauthorizedUserTest {
     public void before(){
         User user = User.getRandomUser();
         userClient = new UserClient();
-        token = userClient.create(user)
+        token = userClient.createUser(user)
                 .extract()
                 .path("accessToken");
 

@@ -1,4 +1,5 @@
 package ru.yandex.diplom_2.user;
+import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import ru.yandex.diplom_2.config.Config;
 import static io.restassured.RestAssured.given;
@@ -9,8 +10,8 @@ public class UserClient extends Config {
     private static final String LOGIN = ROOT + "/login";
     private static final String INFO = ROOT + "/user";
 
-
-    public ValidatableResponse create(User user) {
+    @Step("Create a user for tests")
+    public ValidatableResponse createUser(User user) {
         return getSpec()
                 .body(user)
                 .when()
@@ -18,7 +19,7 @@ public class UserClient extends Config {
                 .then().log().all();
     }
 
-
+    @Step("Login a user")
     public ValidatableResponse login(UserCredentials userCredentials) {
         return getSpec()
                 .body(userCredentials)
@@ -27,7 +28,7 @@ public class UserClient extends Config {
                 .then().log().all();
     }
 
-
+    @Step("Check UserInfo")
     public ValidatableResponse checkUserInfo(String token) {
         return getSpec()
                 .header("Authorization", token)
@@ -36,7 +37,7 @@ public class UserClient extends Config {
                 .then().log().all();
     }
 
-
+    @Step("Update user's personal information")
     public ValidatableResponse updateUserInfo(String token, UserCredentials userCredentials) {
         return getSpec()
                 .header("Authorization", token)
@@ -45,8 +46,8 @@ public class UserClient extends Config {
                 .patch(INFO)
                 .then().log().all();
     }
-
-    public void delete(String token) {
+    @Step("Delete a user after tests")
+    public void deleteUser(String token) {
         getSpec()
                 .header("Authorization", token)
                 .when()

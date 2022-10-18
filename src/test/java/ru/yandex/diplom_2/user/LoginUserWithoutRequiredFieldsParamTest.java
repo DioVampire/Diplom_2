@@ -37,7 +37,7 @@ public class LoginUserWithoutRequiredFieldsParamTest {
     //Удаление пользователя
     @After
     public void delete() {
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class LoginUserWithoutRequiredFieldsParamTest {
     public void courierLoginWithoutNecessaryField () {
 
         // Создание пользователя
-        ValidatableResponse response = userClient.create(user);
+        ValidatableResponse response = userClient.createUser(user);
         // Получение токена пользователя
         token = response.extract().path("accessToken");
         // Авторизация пользователя

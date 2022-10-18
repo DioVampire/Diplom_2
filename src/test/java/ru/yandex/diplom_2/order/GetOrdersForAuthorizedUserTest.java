@@ -29,7 +29,7 @@ public class GetOrdersForAuthorizedUserTest {
     public void setup(){
         User user = User.getRandomUser();
         userClient = new UserClient();
-        token = userClient.create(user)
+        token = userClient.createUser(user)
                 .extract()
                 .path("accessToken");
 
@@ -47,7 +47,7 @@ public class GetOrdersForAuthorizedUserTest {
     // Удаляем пользователя
     @After
     public void delete() {
-            userClient.delete(token);
+            userClient.deleteUser(token);
     }
 
     @Test

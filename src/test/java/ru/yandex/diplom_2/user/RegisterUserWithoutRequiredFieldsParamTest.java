@@ -52,7 +52,7 @@ public class RegisterUserWithoutRequiredFieldsParamTest {
     public void courierNotCreatedWithoutNecessaryField () {
 
         // Создание пользователя
-        ValidatableResponse response = new UserClient().create(user);
+        ValidatableResponse response = new UserClient().createUser(user);
         // Получение статус кода
         int actualStatus = response.extract().statusCode();
         // Получение тела ответа при создании пользователя

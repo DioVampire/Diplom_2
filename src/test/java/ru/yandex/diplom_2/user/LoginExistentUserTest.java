@@ -27,7 +27,7 @@ public class LoginExistentUserTest {
     @After
     public void delete() {
 
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class LoginExistentUserTest {
     public void loginExistentUserTest() {
 
         // Создание пользователя
-        userClient.create(user);
+        userClient.createUser(user);
         // Авторизация пользователя
         ValidatableResponse login = userClient.login(UserCredentials.from(user));
         // Получение статус кода авторизации

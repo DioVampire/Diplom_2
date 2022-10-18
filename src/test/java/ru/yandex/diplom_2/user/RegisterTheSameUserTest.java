@@ -29,7 +29,7 @@ public class RegisterTheSameUserTest {
     // Удаление созданного пользователя
     @After
     public void delete(){
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
 
@@ -39,11 +39,11 @@ public class RegisterTheSameUserTest {
     public void userCanBeCreatedTest (){
 
         // Создание клиента
-        ValidatableResponse response =userClient.create(user);
+        ValidatableResponse response =userClient.createUser(user);
         // Получение токена пользователя
         token = response.extract().path("accessToken");
         // Попытка создания пользователя с теми же данными
-        ValidatableResponse response2 = userClient.create(user);
+        ValidatableResponse response2 = userClient.createUser(user);
         // Получение кода повторной регистрации
         int actualCode = response2.extract().statusCode();
         // Получение тела ответа повторной регистрации

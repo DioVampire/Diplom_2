@@ -27,7 +27,7 @@ public class ChangeUserDataTests {
     public void changeEmailWithAuthorizationTest() {
 
         // Создание пользователя
-        userClient.create(user);
+        userClient.createUser(user);
         // Авторизация пользователя
         ValidatableResponse login = userClient.login(UserCredentials.from(user));
         // Получение токена пользователя
@@ -49,7 +49,7 @@ public class ChangeUserDataTests {
         assertNotEquals(oldEmail,newEmail);
 
         //Удаление пользователя
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class ChangeUserDataTests {
     public void changePasswordWithAuthorizationTest() {
 
         // Создание пользователя
-        userClient.create(user);
+        userClient.createUser(user);
         // Авторизация пользователя
         ValidatableResponse login = userClient.login(UserCredentials.from(user));
         // Получение токена пользователя
@@ -76,7 +76,7 @@ public class ChangeUserDataTests {
         assertTrue (isDataChanged);
 
         //Удаление пользователя
-        userClient.delete(token);
+        userClient.deleteUser(token);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class ChangeUserDataTests {
     public void changeNameWithAuthorizationTest() {
 
         // Создание пользователя
-        userClient.create(user);
+        userClient.createUser(user);
         // Авторизация пользователя
         ValidatableResponse login = userClient.login(UserCredentials.from(user));
         // Получение токена пользователя
